@@ -20,14 +20,14 @@ public class Store {
     }
 
     //TODO: Drink version
-    public void addToInventory() {
-        Drink drink = new Drink();
-        addToInventory(drink);
-    }
+//    public void addToInventory() {
+//        Drink drink = new Drink();
+//        addToInventory(drink);
+//    }
 
     //TODO: Fruit version
-    public void addToInventory() {
-        Fruit fruit = new Fruit();
-        addToInventory(fruit);
-    }
+//    public void addToInventory() {
+//        Fruit fruit = new Fruit();
+//        addToInventory(fruit);
+//    }
  }

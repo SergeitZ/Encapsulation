@@ -20,7 +20,7 @@ public class Product {
 
     @Override
     public String toString() {
-        String output = "{id: " + id + " | name: " + name + " | price: " + getDisplayPrice() + "}";
+        String output = "{id: " + id + " | name: " + name + " | price: " + getDisplayPrice() + " | ";
         return output;
     }
 }
