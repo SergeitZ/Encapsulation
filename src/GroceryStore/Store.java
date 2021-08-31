@@ -2,6 +2,7 @@ package GroceryStore;
 import GroceryStore.Products.*;
 import java.util.ArrayList;
 import java.util.List;
+import com.company.Util.Formatter;
 
 
 public class Store {
@@ -13,12 +14,15 @@ public class Store {
         this.name = name;
     }
 
-    //TODO: add to the given collection
     public void addToInventory(Product product) {
+        if (product.getPrice() > balance) {
+            System.out.println("Not enough funds");
+            return;
+        }
+        balance -= product.getPrice();
         inventory.add(product);
     }
 
-    //TODO: Drink version
     public void addToInventory(String name, int price, String id, String description, int volume, String volumeUnit) {
         Drink drink = new Drink(name, price, id, description, volume, volumeUnit);
         addToInventory(drink);
@@ -29,7 +33,6 @@ public class Store {
         addToInventory(drink);
     }
 
-    //TODO: Fruit version
     public void addToInventory(String name, int price, String id, String description, int hardness) {
         Fruit fruit = new Fruit(name, price, id, description, hardness);
         addToInventory(fruit);
@@ -40,10 +43,24 @@ public class Store {
         addToInventory(fruit);
     }
 
-    public void displayInventory() {
-        for (Product product : inventory) {
-            System.out.println(product);
+    public void throwAway(Product product) {
+        inventory.remove(product);
+    }
+
+    public String getInventory() {
+        String output = "";
+        for (Product prod : inventory) {
+            output += prod + "\n";
         }
+        return output;
+    }
+
+    public String getBalance () {
+        return Formatter.getDisplayPrice(balance);
+    }
+
+    public String getName() {
+        return name;
     }
 
  }

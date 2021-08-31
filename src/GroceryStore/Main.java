@@ -2,6 +2,7 @@ package GroceryStore;
 import GroceryStore.Products.Drink;
 import GroceryStore.Products.Fruit;
 import GroceryStore.Products.Product;
+import GroceryStore.console.UI;
 
 public class Main {
 
@@ -14,15 +15,13 @@ public class Main {
 
         Store store = new Store("Sergio's Emporium");
 
-        store.addToInventory("Soy boy", 999_000, "001", "soy boy milk", 2, "gal");
-        store.addToInventory("Mega Mango", 6_99, "002", "Mango that's mega", 6, true);
-
-        store.displayInventory();
-
-//        System.out.println(prod);
-//        System.out.println(prod2);
-//        System.out.println(prod3);
-//        System.out.println(prod4);
+//        System.out.println(store.getBalance());
+//        store.addToInventory("Soy boy", 7_99, "001", "soy boy milk", 2, "gal");
+//        store.addToInventory("Mega Mango", 6_99, "002", "Mango that's mega", 6, true);
+//
+//        System.out.println(store.getInventory());
+//        System.out.println(store.getBalance());
+        UI.start(store);
 
     }
 }

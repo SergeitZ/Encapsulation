@@ -23,4 +23,8 @@ public class Product {
         String output = "{id: " + id + " | name: " + name + " | price: " + getDisplayPrice() + " | ";
         return output;
     }
+
+    public int getPrice() {
+        return price;
+    }
 }
