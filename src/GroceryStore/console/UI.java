@@ -1,10 +1,9 @@
 package GroceryStore.console;
 import GroceryStore.Products.Drink;
+import GroceryStore.Products.Fruit;
 import GroceryStore.Products.Product;
 import GroceryStore.Store;
 import java.util.Scanner;
-
-//TODO: make the UI system loop until it exits
 
 public class UI {
     private Store store;
@@ -16,6 +15,7 @@ public class UI {
             "4. sell a product",
             "5. quit"
     };
+
     private final static String[] PRODUCT_TYPES = new String[] {
             "1. Drink",
             "2. Fruit"
@@ -36,10 +36,12 @@ public class UI {
     public void start(Store store) {
         this.store = store;
         welcome(store.getName());
-        displayOptions("What do you want to do?" ,MENU);
-        int choice = getInt(1, 5, "Enter selection between 1 and 5:");
-        handleMenuSelection(choice);
-
+        int choice = 0;
+        do {
+            displayOptions("What do you want to do?", MENU);
+            choice = getInt(1, 5, "Enter selection between 1 and 5:");
+            handleMenuSelection(choice);
+        } while (choice != 5);
     }
 
     public static int getInt(int min, int max, String prompt) {
@@ -89,8 +91,7 @@ public class UI {
         Product newProduct;
         switch (choice) {
             case 1 -> newProduct = getDrinkDetails();
-            //TODO: implement the following method use getDrinkDetails as reference
-//            case 2 -> newProduct = getFruitDetails();
+            case 2 -> newProduct = getFruitDetails();
             default -> {
                 System.out.println("Error bad type");
                 newProduct = null;
@@ -101,12 +102,27 @@ public class UI {
 
     private static Drink getDrinkDetails() {
         return new Drink(
-                getString("DrinkName", true),
+                getString("Drink name", true),
                 getInt(1, Integer.MAX_VALUE, "Price?"),
                 getString("ID: ", true),
                 getString("Description", false),
                 getInt(1, Integer.MAX_VALUE, "Volume"),
                 getInt(0, Drink.UNITS.length - 1, "Volume Unit")
+        );
+    }
+
+    private static Fruit getFruitDetails() {
+        boolean isOrganic = true;
+        System.out.println("Is this product organic? Yes = Organic, No = Not organic");
+        String choice = scanner.nextLine();
+        isOrganic = choice.equals("Yes");
+        return new Fruit(
+                getString("Fruit name", true),
+                getInt(1, Integer.MAX_VALUE, "Price?"),
+                getString("ID: ", true),
+                getString("Description", false),
+                getInt(1, 10, "Hardness (1 - 10)"),
+                isOrganic
         );
     }
 
