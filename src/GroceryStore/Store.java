@@ -47,6 +47,11 @@ public class Store {
         inventory.remove(product);
     }
 
+    public void purchase (Product product) {
+        balance += product.getPrice();
+        throwAway(product);
+    }
+
     public String getInventory() {
         String output = "";
         for (Product prod : inventory) {
@@ -61,6 +66,15 @@ public class Store {
 
     public String getName() {
         return name;
+    }
+
+    public Product getProduct(String id) {
+        for (Product product : inventory) {
+            if (product.id.equals(id)) {
+                return product;
+            }
+        }
+        return null;
     }
 
  }

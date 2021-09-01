@@ -1,10 +1,10 @@
 package GroceryStore.Products;
 import java.text.NumberFormat;
 
-public class Product {
+public abstract class Product {
     private String name;
     private int price;
-    private String id;
+    public final String id;
     private String description;
 
     public Product(String name, int price, String id, String description) {
