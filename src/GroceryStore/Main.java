@@ -1,15 +1,15 @@
 package GroceryStore;
-import GroceryStore.Products.Drink;
-import GroceryStore.Products.Fruit;
-import GroceryStore.Products.Product;
-import GroceryStore.console.UI;
+import GroceryStore.konsole.English;
+import GroceryStore.konsole.UserInterface;
 
 public class Main {
 
     public static void main(String[] args) {
 
+        Store store = new Store("The Grocery Store DUH");
 
-        UI ui = new UI(new Store("Sergio's Emporium"));
+//        UI ui = new UI(new Store("Sergio's Emporium"));
+        UserInterface ui = new English(store);
 
         ui.start();
     }
